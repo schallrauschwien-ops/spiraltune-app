@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SpiralTune – Guitar Tuner & Metronome</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #0D0D1A;
+      color: #fff;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 60px 20px 50px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0.12;
+    }
+    .hero-content { position: relative; z-index: 1; }
+
+    .logo {
+      width: 90px;
+      height: 90px;
+      border-radius: 20px;
+      margin: 0 auto 24px;
+      display: block;
+    }
+
+    h1 {
+      font-size: 3em;
+      font-weight: 900;
+      background: linear-gradient(90deg, #FF006E, #FFD600, #00F5A0, #00D4FF);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 12px;
+    }
+
+    .tagline {
+      font-size: 1em;
+      color: rgba(255,255,255,0.5);
+      letter-spacing: 3px;
+      margin-bottom: 36px;
+    }
+
+    .download-btn {
+      display: inline-block;
+      background: linear-gradient(135deg, #00D4FF, #BF5AF2);
+      color: #fff;
+      padding: 16px 36px;
+      border-radius: 14px;
+      font-size: 1.05em;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-decoration: none;
+      box-shadow: 0 4px 24px rgba(0, 212, 255, 0.3);
+      transition: transform 0.2s;
+    }
+    .download-btn:hover { transform: scale(1.04); }
+
+    .free-badge {
+      margin-top: 12px;
+      font-size: 0.8em;
+      color: rgba(255,255,255,0.35);
+      letter-spacing: 3px;
+    }
+
+    .features {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      justify-content: center;
+      padding: 50px 24px;
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    .feature {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 16px;
+      padding: 24px 20px;
+      width: 250px;
+      text-align: center;
+      transition: transform 0.2s;
+    }
+    .feature:hover { transform: translateY(-4px); }
+
+    .feature-top {
+      height: 3px;
+      border-radius: 2px;
+      margin-bottom: 16px;
+    }
+
+    .feature-icon { font-size: 2.2em; margin-bottom: 12px; }
+
+    .feature h3 {
+      font-size: 1em;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: #fff;
+      letter-spacing: 1px;
+    }
+
+    .feature p {
+      font-size: 0.88em;
+      color: rgba(255,255,255,0.5);
+      line-height: 1.6;
+    }
+
+    .divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, #FF006E, #00D4FF, transparent);
+      margin: 0 40px;
+    }
+
+    .footer {
+      text-align: center;
+      padding: 32px 20px;
+      color: rgba(255,255,255,0.3);
+      font-size: 0.85em;
+    }
+    .footer a {
+      color: #00D4FF;
+      text-decoration: none;
+      margin: 0 8px;
+    }
+    .footer a:hover { color: #FF006E; }
+  </style>
+</head>
+<body>
+
+<div class="hero">
+  <svg class="hero-bg" viewBox="0 0 1200 400" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+    <circle cx="200" cy="200" r="180" fill="none" stroke="#FF006E" stroke-width="2"/>
+    <circle cx="200" cy="200" r="145" fill="none" stroke="#FF6B00" stroke-width="2"/>
+    <circle cx="200" cy="200" r="110" fill="none" stroke="#FFD600" stroke-width="2"/>
+    <circle cx="200" cy="200" r="75" fill="none" stroke="#00F5A0" stroke-width="2"/>
+    <circle cx="200" cy="200" r="40" fill="none" stroke="#00D4FF" stroke-width="2"/>
+    <circle cx="1000" cy="200" r="180" fill="none" stroke="#BF5AF2" stroke-width="2"/>
+    <circle cx="1000" cy="200" r="145" fill="none" stroke="#00D4FF" stroke-width="2"/>
+    <circle cx="1000" cy="200" r="110" fill="none" stroke="#00F5A0" stroke-width="2"/>
+    <circle cx="1000" cy="200" r="75" fill="none" stroke="#FFD600" stroke-width="2"/>
+    <circle cx="1000" cy="200" r="40" fill="none" stroke="#FF006E" stroke-width="2"/>
+  </svg>
+
+  <div class="hero-content">
+    <svg class="logo" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <rect width="100" height="100" fill="#0D0D1A"/>
+      <circle cx="50" cy="50" r="44" fill="none" stroke="#FF006E" stroke-width="3" opacity="0.6"/>
+      <circle cx="50" cy="50" r="35" fill="none" stroke="#FFD600" stroke-width="3" opacity="0.6"/>
+      <circle cx="50" cy="50" r="26" fill="none" stroke="#00F5A0" stroke-width="3" opacity="0.6"/>
+      <circle cx="50" cy="50" r="17" fill="none" stroke="#00D4FF" stroke-width="3" opacity="0.6"/>
+      <rect x="48" y="58" width="5" height="22" rx="2.5" fill="white"/>
+      <path d="M43,22 L43,44 Q43,53 50.5,55 Q58,53 58,44 L58,22" fill="none" stroke="white" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <line x1="43" y1="22" x2="43" y2="31" stroke="white" stroke-width="4.5" stroke-linecap="round"/>
+      <line x1="58" y1="22" x2="58" y2="31" stroke="white" stroke-width="4.5" stroke-linecap="round"/>
+    </svg>
+
+    <h1>SpiralTune</h1>
+    <div class="tagline">GUITAR TUNER · METRONOME · TAP TEMPO</div>
+
+    <a class="download-btn" href="https://play.google.com/store/apps/details?id=com.spiraltune.app">
+      ⬇ Download on Google Play
+    </a>
+    <div class="free-badge">FREE · NO ADS</div>
+  </div>
+</div>
+
+<div class="features">
+  <div class="feature">
+    <div class="feature-top" style="background:linear-gradient(90deg,#00D4FF,#BF5AF2)"></div>
+    <div class="feature-icon">🎸</div>
+    <h3>GUITAR TUNER</h3>
+    <p>Precise pitch detection using the YIN algorithm. Tune all 6 strings accurately in real-time.</p>
+  </div>
+  <div class="feature">
+    <div class="feature-top" style="background:linear-gradient(90deg,#00F5A0,#00D4FF)"></div>
+    <div class="feature-icon">🥁</div>
+    <h3>METRONOME</h3>
+    <p>Sample-accurate timing using Android's AudioTrack API. Time signatures 2/4, 3/4, 4/4, 6/4.</p>
+  </div>
+  <div class="feature">
+    <div class="feature-top" style="background:linear-gradient(90deg,#FF006E,#FF6B00)"></div>
+    <div class="feature-icon">👆</div>
+    <h3>TAP TEMPO</h3>
+    <p>Tap the mushroom to instantly calculate your BPM. Perfect for matching any song's tempo.</p>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<div class="footer">
+  © 2026 SpiralTune &nbsp;·&nbsp;
+  <a href="https://schallrauschwien-ops.github.io/spiraltune-privacy">Privacy Policy</a>
+  &nbsp;·&nbsp;
+  <a href="mailto:YOUR@EMAIL.COM">Contact</a>
+</div>
+
+</body>
+</html>
